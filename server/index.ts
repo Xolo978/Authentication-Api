@@ -1,8 +1,22 @@
 import Fastify from "fastify";
+import mongoose, {mongo} from "mongoose"
 const fastify = Fastify({
     logger:true
 })
-const start = (port:number) =>{
+const connectDB = async (connector:string) =>{
+    try{
+        await mongoose.connect(connector);
+        console.log("Connected to DB")
+    }
+    catch(err){
+        console.log("Failed to connect to DB")
+        console.log(err)
+        process.exit(1);
+
+    }
+}
+const start = async(port:number,connector:string) =>{
+    await connectDB(connector)
     fastify.listen({port:port},(err,address)=>{
         if(err){
             fastify.log.error(err)
@@ -11,4 +25,5 @@ const start = (port:number) =>{
         fastify.log.info(`Server started on port {port}`)
     })
 }
-start(3000)
+await start(3000,"mongodb://localhost:27017/")
+
