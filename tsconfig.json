@@ -14,7 +14,8 @@
     "moduleResolution": "node",
     "emitDeclarationOnly": false,
     "noImplicitAny": false,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

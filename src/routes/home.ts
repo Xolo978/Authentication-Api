@@ -1,4 +1,7 @@
+import { FastifyInstance } from 'fastify';
 
-fastify.get('/home', async (req: FastifyRequest, res: FastifyReply) => {
-    res.send({ message: "Test route works!" });
-});
+export const HomeRoute = async (fastify: FastifyInstance) => {
+  fastify.get('/', async (request, reply) => {
+    return { message: 'Welcome to the API!' };
+  });
+};

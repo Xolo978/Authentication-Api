@@ -1,5 +1,5 @@
 export interface ResponseBody{
-    username:string,
+    username?:string,
     email: string,
     password: string,
 

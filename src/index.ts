@@ -1,7 +1,8 @@
 import Fastify from "fastify";
 import mongoose from "mongoose"
 const key :string = "mongodb://localhost:2070/XoloDb"
-import {RegisterRoute} from "./routes/register";
+import {RegisterRoute} from "./routes/register.js";
+import {LoginRoute} from "./routes/login.js";
 const fastify = Fastify({
     logger:false
 })
@@ -16,7 +17,8 @@ const connectDB = async (connector: string) =>{
     }
 
 }
-// fastify.register(RegisterRoute)
+fastify.register(RegisterRoute)
+fastify.register(LoginRoute)
 const start = async (port: number, connector: string) =>{
     await connectDB(connector)
     fastify.listen({port:port},(err)=>{
@@ -24,7 +26,7 @@ const start = async (port: number, connector: string) =>{
             fastify.log.error(err)
             return process.exit(1)
         }
-        console.log(`Server started on port ${port}`)
+        console.log(`Server listening on ${port}`);
     })
 }
 await start(3000,<string>key)
