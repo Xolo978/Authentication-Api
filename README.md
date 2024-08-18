@@ -1,15 +1,4 @@
-# auth-api
+# Auth API
 
-To install dependencies:
+A simple authentication API built with Fastify, TypeScript, and MongoDB. This API includes user registration and login functionality, with email verification and password hashing features in progress.
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run server/index.ts
-```
-
-This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
