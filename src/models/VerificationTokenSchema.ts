@@ -1,10 +1,10 @@
 import mongoose, {Document,Schema} from "mongoose";
-export interface User extends Document {
-    username:string;
+export interface VerificationToken extends Document {
     password:string;
     email:string;
+    username:string;
 }
-const UserSchema : Schema = new Schema({
+const verificationTokenSchema : Schema = new Schema({
     email:{
         type: String,
         required: true,
@@ -18,10 +18,6 @@ const UserSchema : Schema = new Schema({
     password:{
         type: String,
         required: true,
-    },
-
+    }
 })
-
-export const User = mongoose.model<User>('User', UserSchema);
-
-
+export const VerificationTokenSchema = mongoose.model<VerificationToken>('VerificationToken', verificationTokenSchema);
